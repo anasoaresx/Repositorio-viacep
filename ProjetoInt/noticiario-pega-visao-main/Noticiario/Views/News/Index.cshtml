@@ -1,0 +1,49 @@
+﻿@using Noticiario.Models.ViewModels
+@model IEnumerable<New>
+@{
+    ViewData["Title"] = "Notícias";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Adicionar nova publicação</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (New item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                    <a type="button"
+                       title="Detalhes"
+                       class="btn btn-outline-info px-2 py-1 rounded mx-1"
+                       asp-action="Details"
+                       asp-route-id="@item.Id">
+                        <i class="bi bi-list-ul"></i>
+                    </a>
+                    <a type="button"
+                       title="Editar"
+                       class="btn btn-outline-warning px-2 py-1 rounded mx-1" asp-action="Edit"
+                       asp-route-id="@item.Id">
+                        <i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a type="button"
+                       title="Excluir"
+                       class="btn btn-outline-danger px-2 py-1 rounded mx-1"
+                       asp-action="Delete"
+                       asp-route-id="@item.Id">
+                        <i class="bi bi-trash-fill"></i>
+                    </a>
+            </tr>
+        }
+    </tbody>
+</table>
